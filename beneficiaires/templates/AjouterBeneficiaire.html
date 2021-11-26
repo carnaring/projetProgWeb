@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/AjouterBeneficiaire.css" />
+    <script src="/beneficiaires/static/jquerry.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <main>
+    <h2>Bénéficiaire</h2>
+    <form class ="form" action="/success/" method="POST" onsubmit="return checkSpace()">
+        {% csrf_token %}
+      <input type="hidden" value={{envoi}} name="type1" id="type">
+        <input type="hidden" value="benef" name="focus1">
+        <input type="hidden" value={{req}} name="id">
+        <div class="form-division">
+            <label for="nom"> Nom  </label>
+            <input type="text"  name="nom1" required placeholder="Nom" id="nom" class="input1" value={{querry.nom}} >
+        </div>
+
+        <div class="form-division">
+            <label for="Prenom"> Prénom  </label>
+            <input type="text" name="prenom1" required placeholder="Prénom" id="Prenom" class="input1" value={{querry.prenom}} >
+        </div>
+
+        <div class="form-division">
+            <label for="mail"> Mail  </label>
+            <input type="text" name="mail1" placeholder="Mail" id="Mail" class="input1" value={{querry.mail}} >
+        </div>
+
+        <div class="form-division">
+            <label for="Adresse"> Adresse  </label>
+            <input type="text" name="adresse1"  placeholder="Adresse" id="Adresse" class="input1" value={{querry.adressepostale}}>
+        </div>
+
+        <div class="form-division">
+            <label for="Telephone"> Telephone  </label>
+            <input type="tel" name="tel1"  placeholder="Telephone" id="Telephone"  class="input1" value={{querry.telephone}} >
+        </div>
+
+    <div class="form-division">
+      <label for="Parts"> Parts  </label>
+      <br>
+        0-3 ans : <input type="number" name="q0_3" value="0"  placeholder="0" min="0" step="1" > <br>
+        4-14 ans : <input type="number" name="q4_14" value="0" placeholder="0" min="0" step="1" > <br>
+        15-25 ans : <input type="number" name="q15_25" value="0" placeholder="0" min="0" step="1" > <br>
+        26-64 ans : <input type="number" name="q26_64" value="0" placeholder="0" min="0" step="1" > <br>
+        plus de 65 ans : <input type="number" name="q65plus" value="0" placeholder="0" min="0" step="1" > <br>
+    </div>
+
+        <div class="form-division">
+        <label for="mairieChoix"> Mot de la mairie</label>
+             <div class="form-radio">
+            <input type="radio" required id="mairieChoix1" class="input1"
+             name="mot1" value="1">
+             <label for="mairieChoix1">oui</label>
+    
+            <input type="radio" required  id="mairieChoix2" class="input1"
+             name="mot1" value="0">
+             <label for="mairieChoix2">non </label>
+            </div>
+        </div>  
+
+        <div class="form-division">
+            <label for="Cartedonnee"> Carte donnée</label>
+                 <div class="form-radio">
+                <input type="radio" required id="Cartedonnee1" class="input1"
+                 name="carte1" value="1">
+                 <label for="Cartedonnee1">oui</label>
+        
+                <input type="radio" required  id="Cartedonnee2" class="input1"
+                 name="carte1" value="0">
+                 <label for="Cartedonnee2">non </label>
+                </div>
+            </div>  
+
+            <div class="form-division">
+                <label for="Remarque"> Remarque  </label>
+                <textarea name="remarque1" id="Remarque" class="input1" value={{querry.remarque}}></textarea  >
+            </div>
+
+            <div class="form-division">
+                <label for="Presence"> Présent</label>
+                     <div class="form-radio">
+                    <input type="radio" required  id="Presence1" class="input1"
+                     name="presence1" value="1">
+                     <label for="Presence1">oui</label>
+            
+                    <input type="radio" required id="Presence2" class="input1"
+                     name="presence1" value="0">
+                     <label for="Presence2">non </label>
+                    </div>
+                </div> 
+
+            <p> <button class="form_btn" value={{envoi}} type="submit">Enregistrer</button> </p>
+
+    </form>
+</main>
+<script>
+    if(document.getElementById("type").value == "update"){
+      document.getElementById("nom").value = document.getElementById("nom").value.split('_').join(' ');
+      document.getElementById("Prenom").value = document.getElementById("Prenom").value.split('_').join(' ');
+      document.getElementById("Mail").value = document.getElementById("Mail").value.split('_').join(' ');
+      document.getElementById("Adresse").value = document.getElementById("Adresse").value.split('_').join(' ');
+      document.getElementById("Remarque").value = document.getElementById("Remarque").value.split('_').join(' ');
+    }
+    function checkSpace(){
+      document.getElementById("nom").value = document.getElementById("nom").value.split(' ').join('_');
+      document.getElementById("Prenom").value = document.getElementById("Prenom").value.split(' ').join('_');
+      document.getElementById("Mail").value = document.getElementById("Mail").value.split(' ').join('_');
+      document.getElementById("Adresse").value = document.getElementById("Adresse").value.split(' ').join('_');
+      document.getElementById("Remarque").value = document.getElementById("Remarque").value.split(' ').join('_');
+      
+      }
+</script>
+</body>
+</html>

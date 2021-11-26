@@ -1,0 +1,78 @@
+body {
+    background: #a7bfd6;
+    font-family: "Nunito", sans-serif;
+  }
+
+  main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+
+.form-division{
+    padding: 0.8rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 20rem;
+    display: block;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid #bdbdbb; 
+    background-color: #7e7a83fb;
+    color: #eeeeee;
+}
+
+.form_btn {
+    display: inline-block;
+    background-color: #7e7a83fb;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    width: 150px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+    .form-division-image{
+        padding: 0.8rem;
+        margin: auto;
+        margin-top: 0.5rem;
+        width: 20rem;
+        display: block;
+        border-radius: 0.5rem;
+        outline: none;
+        color: #eeeeee;
+    }
+
+    input {
+      padding: 0.2rem;
+      margin: auto;
+      margin-top: 0.5rem;
+      width: 20rem;
+      border-radius: 0.5rem;
+      outline: none;
+      border: 1px solid #bdbdbb;
+    }
+
+    select{
+      padding: 0.2rem;
+      margin: auto;
+      margin-top: 0.5rem;
+      width: 20rem;
+      border-radius: 0.5rem;
+      outline: none;
+      border: 1px solid #bdbdbb;
+    }
+    

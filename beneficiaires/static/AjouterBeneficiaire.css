@@ -1,0 +1,87 @@
+body {
+    background: #a7bfd6;
+    font-family: "Nunito", sans-serif;
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+
+.form-division{
+    padding: 0.8rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 20rem;
+    display: block;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid #bdbdbb; 
+    background-color: #7e7a83fb;
+    color: #eeeeee;
+}
+
+.form_btn {
+    display: inline-block;
+    background-color: #7e7a83fb;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    width: 150px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+    .input1 {
+        padding: 0.2rem;
+        margin: auto;
+        margin-top: 0.5rem;
+        width: 20rem;
+        border-radius: 0.5rem;
+        outline: none;
+        border: 1px solid #bdbdbb;
+      }
+  
+      select{
+        padding: 0.2rem;
+        margin: auto;
+        margin-top: 0.5rem;
+        width: 20rem;
+        border-radius: 0.5rem;
+        outline: none;
+        border: 1px solid #bdbdbb;
+      }
+
+      
+      .form-radio{
+        line-height: 32px;
+        -moz-appearance: none;
+        display: flex;
+        border-radius: 0.5rem;
+        align-items: flex-start;
+        margin-bottom: 5px;
+        width: 250px;
+        position: relative;
+        color: #eeeeee;
+        top: 6px;
+        background-color: #7e7a83fb;
+
+      }
+
+      input{
+        border-radius: 0.5rem;
+        border: 1px solid #bdbdbb;
+        margin-top: 0.5rem;
+      }
+

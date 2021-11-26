@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetweb</title>
+    <link rel="stylesheet" href="../static/Categoriecss.css" />
+    <script src="/beneficiaires/static/jquerry.js"></script>
+</head>
+<body>
+    <main>
+    <h2>Produit</h2>
+        <form class = "form" onsubmit="return checkSpace()" action="/success/" method="post">
+          {% csrf_token %}
+          <input type="hidden" value={{envoi}} name="type1" id="type">
+            <input type="hidden" value="produit" name="focus1">
+            <input type="hidden" value={{req}} name="id">
+            <div class="form-division">
+                <label for="Categorie"> Catégorie </label>
+                <select id="Categorie" name="idcategorie1" >
+                  {% for list in result %}
+                  <option value={{list.idcategorie}}>{{list.nomCategorie}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="form-division">
+            <label for="nameProduit"> Nom </label>
+            <input type="text" name="nomProduit" required placeholder="Entrez le nom du produit" id="nameProduit" value={{querry.nom}} >
+            </div>
+
+            <div class="form-division">
+                <label for="Unite_en_stock"> Unité en stock </label>
+                <input name="quantite" required type="number" value={{querry.quantite}}  placeholder="0" id="Unite_en_stock" min="0" step="1" >
+            </div>
+
+            <div class = "form-division">
+              <label for="Seuil_dalert">Seuil d'alerte  </label>
+              <input name="seuil" id="alerte" required type="number" value={{querry.seuilalerte}} min="0" step="1">
+            </div>
+
+            <p> <button class="form_btn" value={{envoi}} type="submit">Enregistrer</button> </p>
+        </form>
+    </main>
+    <script>
+      if(document.getElementById("type").value == "update"){
+        document.getElementById("nameProduit").value = document.getElementById("nameProduit").value.split('_').join(' ');
+      }
+      function checkSpace(){
+        document.getElementById("nameProduit").value = document.getElementById("nameProduit").value.split(' ').join('_');
+        }
+  </script>
+</body>
+</html>

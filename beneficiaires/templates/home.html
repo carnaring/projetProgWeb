@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../static/jquerry.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    
+</head>
+<body>
+    <main>
+        <form action="/" method="post" id="formHome">{% csrf_token %}</form>
+    <h2>Bienvenue sur notre site</h2>
+        <p>Que souhaitez-vous faire?</p>
+        <form class="form"  action="addBenef/" method="POST">
+        {% csrf_token %}
+            <div class="form-division">
+                <label for="Choix"> </label>
+                <select id="Choix">
+                  <option value="1">Ajouter un Bénéficiaire</option>
+                  <option value="2">Ajouter un Produit</option>
+                  <option value="3">Ajouter une Catégorie</option>
+                  <option value="4">Modifier un Bénéficiaire</option>
+                  <option value="5">Modifier un Produit</option>
+                  <option value="6">Modifier une Catégorie</option>
+                </select>
+            </div>
+            <div class="form-division formBene">
+                <label for="listBene">Choisissez un Bénéficiaires </label>
+                <select id="listBene" name="listBene">
+                    {% for bene in bene %}
+                  <option value={{bene.idbeneficiaire}}>{{bene.nom}}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            <div class="form-division formCate">
+                <label for="listCate">Choisissez une Catégorie </label>
+                <select id="listCate" name="listCate">
+                    {% for cate in cate %}
+                  <option value={{cate.idcategorie}}>{{cate.nomCategorie}}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            <div class="form-division formProd">
+                <label for="listProd">Choisissez un Produit </label>
+                <select id="listProd" name="listProd">
+                    {% for prod in prod %}
+                  <option value={{prod.idproduit}}>{{prod.nom}}</option>
+                  {% endfor %}
+                </select>
+            </div>
+              
+              <p> <button class="form_btn" id="envoi" type="submit">Valider</button> </p>
+        </form>
+       <p id="messSub">{{message}}</p> 
+        <table>
+            
+            <tr>
+            <th>Catégorie</th>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Unité</th>
+            <th>Seuil d'alerte</th>
+            </tr>
+            {% for BenefRelated in test %}
+            <tr>
+                <td>{{BenefRelated.nomCategorie}}</td>
+                <td>{{BenefRelated.NomProduit}}</td>
+                <td>{{BenefRelated.Quantite}}</td>
+                <td>{{BenefRelated.unite}}</td>
+                <td>{{BenefRelated.seuilAlerte}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+</main>
+<script src="../static/choix.js"></script>
+<script>
+    if(document.getElementById("messSub").textContent == "succes"){
+       document.getElementById("formHome").submit(); 
+    }
+    
+</script>
+</body>
+</html>

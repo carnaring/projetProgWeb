@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/Categoriecss.css" />
+    <script src="/beneficiaires/static/jquerry.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+    <h2>Catégorie</h2>
+    <form class="form" action="/success/"  method="post" onsubmit="return checkSpace()">
+      {% csrf_token %}
+      <input type="hidden" value={{envoi}} name="type1" id="type">
+        <input type="hidden" value="categorie" name="focus1" id="focus">
+        <input type="hidden" value={{req}} name="id">
+      <div class="form-division">
+        <label for="nameProduit"> Nom  </label>
+        <input type="text" name="nomCategorie1" required placeholder="Entrez le nom du produit" id="nameProduit" value={{querry.nomCategorie}}>
+    </div>
+    <div class="form-division">
+      <label for="Unite"> Unité  </label>
+      <select id="Unite" name="unite1" >
+        <option value="Kg">Kg</option>
+        <option value="cl">cl</option>
+        <option value="Litre">Litre</option>
+        <option value="g">g</option>
+        <option value="ml">ml</option>
+      </select>
+    </div>
+    <div class="form-division-image">
+      <input id="image" type="file" name="image1" placeholder="Photo"  capture ="user" accept="image/*" alt="une image de votre produit" value={{querry.image}}>
+</div>
+    <p> <button class="form_btn" value={{envoi}} type="submit">Enregistrer</button> </p>
+    </form>
+    </main>
+    <script>
+      if(document.getElementById("type").value == "update"){
+      document.getElementById("nameProduit").value = document.getElementById("nameProduit").value.split('_').join(' ');
+      }
+      function checkSpace(){
+      document.getElementById("nameProduit").value = document.getElementById("nameProduit").value.split(' ').join('_');
+      
+    }
+    </script>
+</body>
+</html>

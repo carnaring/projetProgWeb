@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/jquerry.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <label id="test">Quel formulaire ?</label><br/>
+    <input type="radio" name="formulaire"  value="1" id="oui" checked><label for="oui">Ajouter béneficiaires</label>
+    <input type="radio" name="formulaire"  value="2" id="non" ><label for="non"> Modifier béneficiaires</label>
+    <input type="radio" name="formulaire"  value="3" id="oui"><label for="oui">Ajouter catégories</label>
+    <input type="radio" name="formulaire"  value="4" id="non" ><label for="non"> Ajouter Produit</label>
+    <input type="radio" name="formulaire"  value="5" id="oui"><label for="oui">Modifier catégories</label>
+    <input type="radio" name="formulaire"  value="6" id="non" ><label for="non"> Modifier Produit</label>
+<br><br>
+<div class="selectUpdate">
+    <select name="change" >
+        {% for abc in test %}
+        <option class="changement" value={{abc.idbeneficiaire}}>{{abc.prenom}} {{abc.nom}} : id n° {{abc.idbeneficiaire}}</option>
+        {% endfor %}
+    </select>
+    <table class="test">
+        {% for pia in test %}
+        <tr>
+
+            <td>{{pia.nom}}</td>
+            <td>{{pia.prenom}}</td>
+            <td>{{pia.idbeneficiaire}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<form action="" method="post" style="visibility: hidden;">
+    <input type="text" value="a" id="getId">
+</form>
+
+<form action="/update/" method="post">
+    {% csrf_token %}
+<table >
+    <tr>
+        <th>
+            <input type="text" name="prenom1" placeholder="prenom" value="" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" name="nom1" placeholder="nom" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="email" name="mail1" placeholder="email">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="tel" name="tel1" placeholder="telephone">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" name="adresse1" placeholder="Adresse postale">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <label>Avez vous un mot de la mairie ?</label>
+            <input type="radio" name="mot1" placeholder="oui" value="1"><label for="oui">oui</label>
+            <input type="radio" name="mot1" placeholder="non" value="0" checked><label for="non"> non</label>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <label>Avez vous une carte de présence ?</label>
+            <input type="radio" name="carte1"  value="1" id="oui"><label for="oui">oui</label>
+            <input type="radio" name="carte1"  value="0" id="non" checked><label for="non"> non</label>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="submit" value="Save">
+        </th>
+    </tr>
+
+</table>
+
+</form>
+
+<h3>
+    {{message}}
+</h3>
+</body>
+<script src="../static/choix.js"></script>
+</html>
+
+
+
+
+
+
